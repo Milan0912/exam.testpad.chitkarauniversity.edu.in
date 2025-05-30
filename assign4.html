@@ -1,0 +1,164 @@
+HTML :
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Document</title>
+
+</head>
+
+<body>
+
+  <h2>Function Overloading: Add</h2>
+
+  <input type="text" id="input1" placeholder="Enter first value">
+
+  <input type="text" id="input2" placeholder="Enter second value">
+
+  <button onclick="handleAdd()">Add</button>
+
+  <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+
+ 
+
+  <script src="functions.js"></script>
+
+</body>
+
+</html>
+
+
+
+TYPESCRIPT:
+
+
+
+function add(a: number, b: number): number;
+
+function add(a: string, b: string): string;
+
+
+
+
+
+function add(a: any, b: any): any {
+
+ if (typeof a === "number" && typeof b === "number") {
+
+  return a + b;
+
+ } else {
+
+  return String(a) + String(b);
+
+ }
+
+}
+
+
+
+
+
+function handleAdd(): void {
+
+ const input1 = (document.getElementById("input1") as HTMLInputElement).value;
+
+ const input2 = (document.getElementById("input2") as HTMLInputElement).value;
+
+
+
+ const num1 = Number(input1);
+
+ const num2 = Number(input2);
+
+
+
+ let result: string | number;
+
+
+
+ if (!isNaN(num1) && !isNaN(num2)) {
+
+  
+
+  result = add(num1, num2);
+
+ } else {
+
+ 
+
+  result = add(input1, input2);
+
+ }
+
+
+
+ (document.getElementById("result") as HTMLElement).innerText = `Result: ${result}`;
+
+}
+
+
+
+JAVASCRIPT (transpiled from typescript) :
+
+
+
+function add(a, b) {
+
+  if (typeof a === "number" && typeof b === "number") {
+
+    return a + b;
+
+  }
+
+  else {
+
+    return String(a) + String(b);
+
+  }
+
+}
+
+
+
+function handleAdd() {
+
+  var input1 = document.getElementById("input1").value;
+
+  var input2 = document.getElementById("input2").value;
+
+  var num1 = Number(input1);
+
+  var num2 = Number(input2);
+
+  var result;
+
+  if (!isNaN(num1) && !isNaN(num2)) {
+
+   
+
+    result = add(num1, num2);
+
+  }
+
+  else {
+
+    
+
+    result = add(input1, input2);
+
+  }
+
+  document.getElementById("result").innerText = "Result: ".concat(result);
+
+}
+
